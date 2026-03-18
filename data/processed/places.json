@@ -1,0 +1,443 @@
+[
+  {
+    "id": 1,
+    "name": "Kölner Dom",
+    "category": "Kultur",
+    "city": "Köln",
+    "latitude": 50.9413,
+    "longitude": 6.9583,
+    "description": "Gotisches Meisterwerk und UNESCO-Weltkulturerbe"
+  },
+  {
+    "id": 2,
+    "name": "Phantasialand",
+    "category": "Freizeitpark",
+    "city": "Brühl",
+    "latitude": 50.7986,
+    "longitude": 6.8797,
+    "description": "Einer der größten Freizeitparks Deutschlands"
+  },
+  {
+    "id": 3,
+    "name": "Schloss Benrath",
+    "category": "Kultur",
+    "city": "Düsseldorf",
+    "latitude": 51.1633,
+    "longitude": 6.8711,
+    "description": "Barockes Lustschloss mit Gartenanlage"
+  },
+  {
+    "id": 4,
+    "name": "Teutoburger Wald",
+    "category": "Natur",
+    "city": "Detmold",
+    "latitude": 51.9333,
+    "longitude": 8.8667,
+    "description": "Historisches Waldgebirge mit Hermannsdenkmal"
+  },
+  {
+    "id": 5,
+    "name": "Baldeneysee",
+    "category": "Natur",
+    "city": "Essen",
+    "latitude": 51.395,
+    "longitude": 7.0233,
+    "description": "Stausee der Ruhr mit Freizeitmöglichkeiten"
+  },
+  {
+    "id": 6,
+    "name": "Altstadt Düsseldorf",
+    "category": "Kultur",
+    "city": "Düsseldorf",
+    "latitude": 51.2254,
+    "longitude": 6.7762,
+    "description": "Längste Theke der Welt mit historischer Innenstadt"
+  },
+  {
+    "id": 7,
+    "name": "Schloss Nordkirchen",
+    "category": "Kultur",
+    "city": "Nordkirchen",
+    "latitude": 51.7358,
+    "longitude": 7.5281,
+    "description": "Barockes Wasserschloss – das Versailles Westfalens"
+  },
+  {
+    "id": 8,
+    "name": "Externsteine",
+    "category": "Natur",
+    "city": "Horn-Bad Meinberg",
+    "latitude": 51.8683,
+    "longitude": 8.9181,
+    "description": "Markante Felsformation im Teutoburger Wald"
+  },
+  {
+    "id": 9,
+    "name": "Xantener Dom",
+    "category": "Kultur",
+    "city": "Xanten",
+    "latitude": 51.6579,
+    "longitude": 6.4533,
+    "description": "Romanisch-gotische Stiftskirche in der Römerstadt"
+  },
+  {
+    "id": 10,
+    "name": "Museum Ludwig",
+    "category": "Kultur",
+    "city": "Köln",
+    "latitude": 50.9383,
+    "longitude": 6.9594,
+    "description": "Weltklasse-Sammlung moderner und zeitgenössischer Kunst"
+  },
+  {
+    "id": 11,
+    "name": "Volksgarten Düsseldorf",
+    "category": "Park",
+    "city": "Düsseldorf",
+    "latitude": 51.2081,
+    "longitude": 6.7858,
+    "description": "Historischer Stadtpark mit Rosengarten"
+  },
+  {
+    "id": 12,
+    "name": "Nordpark Düsseldorf",
+    "category": "Park",
+    "city": "Düsseldorf",
+    "latitude": 51.2456,
+    "longitude": 6.7781,
+    "description": "Japanischer Garten und weitläufige Parkanlage"
+  },
+  {
+    "id": 13,
+    "name": "Grugapark",
+    "category": "Park",
+    "city": "Essen",
+    "latitude": 51.4289,
+    "longitude": 6.9983,
+    "description": "Botanischer Garten und Freizeitanlage"
+  },
+  {
+    "id": 14,
+    "name": "Westfalenpark",
+    "category": "Park",
+    "city": "Dortmund",
+    "latitude": 51.4933,
+    "longitude": 7.4908,
+    "description": "Großer Stadtpark mit Fernsehturm Florian"
+  },
+  {
+    "id": 15,
+    "name": "Linnépark",
+    "category": "Park",
+    "city": "Krefeld",
+    "latitude": 51.3319,
+    "longitude": 6.5831,
+    "description": "Historischer Park mit altem Baumbestand"
+  },
+  {
+    "id": 16,
+    "name": "Ruhrtalbahn",
+    "category": "Radweg",
+    "city": "Essen",
+    "latitude": 51.4561,
+    "longitude": 7.0131,
+    "description": "Beliebter Radweg entlang der Ruhr"
+  },
+  {
+    "id": 17,
+    "name": "Rheinradweg",
+    "category": "Radweg",
+    "city": "Köln",
+    "latitude": 50.9333,
+    "longitude": 6.95,
+    "description": "Fernradweg am Rheinufer entlang"
+  },
+  {
+    "id": 18,
+    "name": "Burg Altena",
+    "category": "Kultur",
+    "city": "Altena",
+    "latitude": 51.2967,
+    "longitude": 7.6617,
+    "description": "Erste Jugendherberge der Welt in mittelalterlicher Burg"
+  },
+  {
+    "id": 19,
+    "name": "Sauerland Seen",
+    "category": "Natur",
+    "city": "Meschede",
+    "latitude": 51.35,
+    "longitude": 8.2833,
+    "description": "Seenlandschaft mit Biggesee und Möhnesee"
+  },
+  {
+    "id": 20,
+    "name": "Zoo Köln",
+    "category": "Tiere",
+    "city": "Köln",
+    "latitude": 50.9594,
+    "longitude": 6.9736,
+    "description": "Einer der ältesten Zoos Deutschlands"
+  },
+  {
+    "id": 21,
+    "name": "Zoo Dortmund",
+    "category": "Tiere",
+    "city": "Dortmund",
+    "latitude": 51.5283,
+    "longitude": 7.4561,
+    "description": "Stadtpark und Tierpark in einem"
+  },
+  {
+    "id": 22,
+    "name": "Zoom Gelsenkirchen",
+    "category": "Tiere",
+    "city": "Gelsenkirchen",
+    "latitude": 51.5286,
+    "longitude": 7.0636,
+    "description": "Erlebnispark mit Wildtieren aus aller Welt"
+  },
+  {
+    "id": 23,
+    "name": "Aquazoo Düsseldorf",
+    "category": "Tiere",
+    "city": "Düsseldorf",
+    "latitude": 51.2522,
+    "longitude": 6.7733,
+    "description": "Aquarium und Zoomuseum"
+  },
+  {
+    "id": 24,
+    "name": "Tierpark Bochum",
+    "category": "Tiere",
+    "city": "Bochum",
+    "latitude": 51.4658,
+    "longitude": 7.2197,
+    "description": "Familienfreundlicher Tierpark"
+  },
+  {
+    "id": 25,
+    "name": "Kölner Rheinufer",
+    "category": "Park",
+    "city": "Köln",
+    "latitude": 50.9368,
+    "longitude": 6.9578,
+    "description": "Promenaden am Rheinufer mit Stadtblick"
+  },
+  {
+    "id": 26,
+    "name": "Stadtpark Münster",
+    "category": "Park",
+    "city": "Münster",
+    "latitude": 51.9596,
+    "longitude": 7.6253,
+    "description": "Weitläufiger Park im Herzen der Stadt"
+  },
+  {
+    "id": 27,
+    "name": "Stadtgarten Köln",
+    "category": "Park",
+    "city": "Köln",
+    "latitude": 50.9519,
+    "longitude": 6.9389,
+    "description": "Historischer Stadtgarten mit Konzertpavillon"
+  },
+  {
+    "id": 28,
+    "name": "Hirschpark Duisburg",
+    "category": "Park",
+    "city": "Duisburg",
+    "latitude": 51.4458,
+    "longitude": 6.7797,
+    "description": "Weitläufiger Park mit freilaufenden Hirschen"
+  },
+  {
+    "id": 29,
+    "name": "Rochuspark",
+    "category": "Park",
+    "city": "Düsseldorf",
+    "latitude": 51.2328,
+    "longitude": 6.8039,
+    "description": "Grüner Stadtpark im Düsseldorfer Osten"
+  },
+  {
+    "id": 30,
+    "name": "Revierpark Wischlingen",
+    "category": "Park",
+    "city": "Dortmund",
+    "latitude": 51.5092,
+    "longitude": 7.3994,
+    "description": "Freizeitpark mit Schwimmbad und Minigolf"
+  },
+  {
+    "id": 31,
+    "name": "Kneippanlage Aachen",
+    "category": "Wellness",
+    "city": "Aachen",
+    "latitude": 50.7681,
+    "longitude": 6.0839,
+    "description": "Heilendes Wasser im Herzen Aachens"
+  },
+  {
+    "id": 32,
+    "name": "Spa & Wellness Sieben Quellen",
+    "category": "Wellness",
+    "city": "Dortmund",
+    "latitude": 51.4781,
+    "longitude": 7.4789,
+    "description": "Großes Wellnessangebot in der Ruhrmetropole"
+  },
+  {
+    "id": 33,
+    "name": "Caracalla Therme",
+    "category": "Wellness",
+    "city": "Bonn",
+    "latitude": 50.7374,
+    "longitude": 7.0982,
+    "description": "Thermalbad und Saunabereich"
+  },
+  {
+    "id": 34,
+    "name": "Solebad Wünnenberg",
+    "category": "Wellness",
+    "city": "Bad Wünnenberg",
+    "latitude": 51.5125,
+    "longitude": 8.6994,
+    "description": "Sole- und Erlebnisbad im Paderborner Land"
+  },
+  {
+    "id": 35,
+    "name": "Ruhr Park",
+    "category": "Shopping",
+    "city": "Bochum",
+    "latitude": 51.4458,
+    "longitude": 7.2058,
+    "description": "Eines der größten Einkaufszentren Ruhrgebiet"
+  },
+  {
+    "id": 36,
+    "name": "Rhein-Ruhr-Zentrum",
+    "category": "Shopping",
+    "city": "Mülheim",
+    "latitude": 51.4289,
+    "longitude": 6.8994,
+    "description": "Großes Einkaufscenter im Ruhrgebiet"
+  },
+  {
+    "id": 37,
+    "name": "Centro Oberhausen",
+    "category": "Shopping",
+    "city": "Oberhausen",
+    "latitude": 51.4986,
+    "longitude": 6.8617,
+    "description": "Riesiges Einkaufs- und Freizeitzentrum"
+  },
+  {
+    "id": 38,
+    "name": "Nordwestpark Bochum",
+    "category": "Shopping",
+    "city": "Bochum",
+    "latitude": 51.4978,
+    "longitude": 7.2328,
+    "description": "Modernes Einkaufszentrum"
+  },
+  {
+    "id": 39,
+    "name": "Kö-Bogen Düsseldorf",
+    "category": "Shopping",
+    "city": "Düsseldorf",
+    "latitude": 51.2217,
+    "longitude": 6.7797,
+    "description": "Exklusives Shoppingerlebnis an der Königsallee"
+  },
+  {
+    "id": 40,
+    "name": "Siebengebirge",
+    "category": "Natur",
+    "city": "Bad Honnef",
+    "latitude": 50.6483,
+    "longitude": 7.2067,
+    "description": "Naturpark mit dem Drachenfels und Rheinblick"
+  },
+  {
+    "id": 41,
+    "name": "Wahner Heide",
+    "category": "Natur",
+    "city": "Köln",
+    "latitude": 50.8833,
+    "longitude": 7.15,
+    "description": "Große Heide- und Moorlandschaft östlich von Köln"
+  },
+  {
+    "id": 42,
+    "name": "Arnsberger Wald",
+    "category": "Natur",
+    "city": "Arnsberg",
+    "latitude": 51.3833,
+    "longitude": 7.9667,
+    "description": "Naturpark mit Wanderwegen im Sauerland"
+  },
+  {
+    "id": 43,
+    "name": "Felsenmeer Hemer",
+    "category": "Natur",
+    "city": "Hemer",
+    "latitude": 51.3869,
+    "longitude": 7.7794,
+    "description": "Geologisches Naturdenkmal aus Kalkstein"
+  },
+  {
+    "id": 44,
+    "name": "Neandertal",
+    "category": "Natur",
+    "city": "Mettmann",
+    "latitude": 51.2278,
+    "longitude": 6.9958,
+    "description": "Weltbekanntes Tal mit Neanderthaler-Museum"
+  },
+  {
+    "id": 45,
+    "name": "Altenberger Dom",
+    "category": "Kultur",
+    "city": "Odenthal",
+    "latitude": 51.0664,
+    "longitude": 7.1269,
+    "description": "Gotisches Kirchenjuwel im Bergischen Land"
+  },
+  {
+    "id": 46,
+    "name": "Schloss Augustusburg",
+    "category": "Kultur",
+    "city": "Brühl",
+    "latitude": 50.8258,
+    "longitude": 6.91,
+    "description": "UNESCO-Welterbe Barockschloss"
+  },
+  {
+    "id": 47,
+    "name": "Villa Hügel",
+    "category": "Kultur",
+    "city": "Essen",
+    "latitude": 51.4097,
+    "longitude": 7.0203,
+    "description": "Historisches Wohnhaus der Familie Krupp"
+  },
+  {
+    "id": 48,
+    "name": "Ruhrmuseum",
+    "category": "Kultur",
+    "city": "Essen",
+    "latitude": 51.4456,
+    "longitude": 6.9903,
+    "description": "Kulturhistorisches Museum auf dem Welterbe Zollverein"
+  },
+  {
+    "id": 49,
+    "name": "Zeche Zollverein",
+    "category": "Kultur",
+    "city": "Essen",
+    "latitude": 51.4844,
+    "longitude": 7.0461,
+    "description": "UNESCO-Welterbe und Kulturzentrum"
+  }
+]
