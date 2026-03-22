@@ -401,3 +401,16 @@ def run() -> None:
 
     print(c(f"\n  Favoriten gespeichert unter: {storage.path}", DIM))
     print(c("  Bis zum nächsten Mal! 🗺️\n", CYAN))
+
+# Map export
+    if storage.count() > 0:
+        raw = prompt("\nFavoriten als Karte im Browser öffnen? [j/N]", "n")
+        if raw.lower() in ("j", "ja", "y", "yes"):
+            from goout.map_export import export_map
+            import webbrowser
+            map_path = export_map(storage.all())
+            print(c(f"\n  🗺️  Karte gespeichert: {map_path}", GREEN))
+            webbrowser.open(map_path.as_uri())
+ 
+    print(c(f"\n  Favoriten gespeichert unter: {storage.path}", DIM))
+    print(c("  Bis zum nächsten Mal! 🗺️\n", CYAN))
