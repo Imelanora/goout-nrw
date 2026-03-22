@@ -1,13 +1,8 @@
 from __future__ import annotations
-"""
-app.py
-
-Main application logic for GoOut NRW.
-Handles the interactive CLI session.
-"""
 
 import sys
 
+from goout.plz_data import lookup_plz
 from goout.distance import format_travel_time, travel_time_minutes
 from goout.recommender import (
     filter_places,
@@ -17,7 +12,6 @@ from goout.recommender import (
 )
 from goout.storage import FavoritesStorage
 
-# ── ANSI colour helpers ────────────────────────────────────────────────────────
 
 RESET   = "\033[0m"
 BOLD    = "\033[1m"
@@ -39,12 +33,12 @@ def bold(text: str) -> str:
     return f"{BOLD}{text}{RESET}"
 
 
-# ── Banner ─────────────────────────────────────────────────────────────────────
+# Banner
 
 BANNER = f"""
 {CYAN}{BOLD}╔══════════════════════════════════════════════╗
-║  🗺️   GoOut NRW  –  Freizeit entdecken      ║
-║       Discover leisure in North Rhine-WP    ║
+║  🗺️   GoOut NRW  –  Freizeit entdecken       ║
+║       Discover leisure in North Rhine-WP     ║
 ╚══════════════════════════════════════════════╝{RESET}
 """
 
@@ -65,7 +59,7 @@ def cat_icon(category: str) -> str:
     return CATEGORY_EMOJI.get(category, "📍")
 
 
-# ── Input helpers ──────────────────────────────────────────────────────────────
+# Input helpers
 
 def prompt(msg: str, default: str = "") -> str:
     suffix = f" [{default}]" if default else ""
@@ -140,7 +134,7 @@ def choose_from_list(
             print(c("  Ungültige Auswahl.", YELLOW))
 
 
-# ── NRW city coordinates ───────────────────────────────────────────────────────
+# NRW city coordinates
 
 NRW_CITIES: dict[str, tuple[float, float]] = {
     "Köln":          (50.9333, 6.9500),
@@ -165,33 +159,47 @@ NRW_CITIES: dict[str, tuple[float, float]] = {
 
 
 def choose_location() -> tuple[float, float, str]:
-    """Ask the user to pick a city or enter coordinates."""
+    """Ask the user to enter a PLZ or pick a city."""
     print(f"\n{bold('Dein Startort')}")
-    cities = list(NRW_CITIES.keys())
-    for i, city in enumerate(cities, start=1):
-        print(f"  {DIM}{i:>2}.{RESET}  {city}")
-    print(f"  {DIM} 0.{RESET}  Koordinaten manuell eingeben")
+    print(
+        f"  {c('1', CYAN)} Postleitzahl eingeben  "
+        f"{c('2', CYAN)} Stadt aus Liste wählen"
+    )
     print()
 
-    raw = prompt("Stadtnummer wählen (0 für manuelle Eingabe)", "1")
-    try:
-        idx = int(raw)
-    except ValueError:
-        idx = 1
+    mode = prompt("Wie möchtest du deinen Standort angeben? [1/2]", "1")
 
-    if idx == 0:
-        lat  = prompt_float("Breitengrad (z.B. 51.45)", 51.45)
-        lon  = prompt_float("Längengrad  (z.B. 7.01)", 7.01)
-        name = prompt("Ortsbezeichnung", "Eigener Standort")
-        return lat, lon, name
+    if mode.strip() == "2":
+        # City list
+        cities = list(NRW_CITIES.keys())
+        for i, city in enumerate(cities, start=1):
+            print(f"  {DIM}{i:>2}.{RESET}  {city}")
+        print()
+        raw = prompt("Stadtnummer wählen", "1")
+        try:
+            idx = max(1, min(int(raw), len(cities))) - 1
+        except ValueError:
+            idx = 0
+        city = cities[idx]
+        lat, lon = NRW_CITIES[city]
+        return lat, lon, city
 
-    idx  = max(1, min(idx, len(cities)))
-    city = cities[idx - 1]
-    lat, lon = NRW_CITIES[city]
-    return lat, lon, city
+    # PLZ input
+    while True:
+        plz = prompt("Postleitzahl eingeben (z.B. 47051)")
+        result = lookup_plz(plz)
+        if result:
+            lat, lon, city = result
+            print(c(f"\n  ✓ {city} gefunden", GREEN))
+            return lat, lon, city
+        print(c(
+            f"  PLZ '{plz}' nicht gefunden. "
+            "Bitte eine gültige NRW-Postleitzahl eingeben.",
+            YELLOW
+        ))
 
 
-# ── Place card ─────────────────────────────────────────────────────────────────
+# Place card
 
 def print_place_card(place: dict, transport: str, index: int, total: int) -> None:
     dist   = place["distance_km"]
@@ -213,7 +221,7 @@ def print_place_card(place: dict, transport: str, index: int, total: int) -> Non
     print(f"  {'─' * 46}")
 
 
-# ── Browse loop ────────────────────────────────────────────────────────────────
+# Browse loop
 
 def browse(places: list[dict], transport: str, storage: FavoritesStorage) -> None:
     total   = len(places)
@@ -232,6 +240,12 @@ def browse(places: list[dict], transport: str, storage: FavoritesStorage) -> Non
     while index < total:
         place = places[index]
         print_place_card(place, transport, index + 1, total)
+        print(
+            f"  {c('L', GREEN)} Gefällt mir   "
+            f"{c('S / ENTER', DIM)} Überspringen   "
+            f"{c('F', MAGENTA)} Favoriten   "
+            f"{c('Q', RED)} Beenden"
+        )
 
         already = storage.contains(place["id"])
         if already:
@@ -273,7 +287,7 @@ def browse(places: list[dict], transport: str, storage: FavoritesStorage) -> Non
     )
 
 
-# ── Favorites view ─────────────────────────────────────────────────────────────
+# Favorites view
 
 def show_favorites(storage: FavoritesStorage, transport: str = "car") -> None:
     favs = storage.all()
@@ -305,7 +319,7 @@ def show_favorites(storage: FavoritesStorage, transport: str = "car") -> None:
             pass
 
 
-# ── Main session ───────────────────────────────────────────────────────────────
+# Main session
 
 def run() -> None:
     print(BANNER)
@@ -319,17 +333,17 @@ def run() -> None:
 
     storage = FavoritesStorage()
 
-    # ── Step 1: Location ──────────────────────────────────────────────
+    # Location
     user_lat, user_lon, user_city = choose_location()
     print(c(f"\n  Standort gesetzt: {user_city} ({user_lat:.4f}°N, {user_lon:.4f}°E)", DIM))
 
-    # ── Step 2: Max distance ──────────────────────────────────────────
+    # Max distance
     print(f"\n{bold('Maximale Entfernung')}")
     max_km = prompt_int(
         "Wie weit möchtest du fahren? (km)", default=50, min_val=1, max_val=500
     )
 
-    # ── Step 3: Transport mode ────────────────────────────────────────
+    # Transport
     print(f"\n{bold('Verkehrsmittel')}")
     transport_options = ["walking", "bike", "car"]
     transport_labels  = {
@@ -351,7 +365,7 @@ def run() -> None:
     transport = transport_options[t_idx]
     print(c(f"\n  Verkehrsmittel: {transport_labels[transport]}", DIM))
 
-    # ── Step 4: Categories ────────────────────────────────────────────
+    # Categories
     print(f"\n{bold('Aktivitätskategorien')}")
     all_cats = get_all_categories(places)
     selected_cats = choose_from_list(
@@ -362,7 +376,7 @@ def run() -> None:
     )
     print(c(f"\n  Ausgewählt: {', '.join(selected_cats)}", DIM))
 
-    # ── Step 5: Filter & recommend ────────────────────────────────────
+    # Filter and recommend
     filtered = filter_places(places, user_lat, user_lon, max_km, selected_cats)
     filtered = shuffle_recommendations(filtered)
 
@@ -377,7 +391,6 @@ def run() -> None:
     print(c(f"\n  {len(filtered)} Orte gefunden – viel Spaß beim Entdecken! 🎉", GREEN))
     input(f"\n{CYAN}▶{RESET} ENTER drücken um zu starten …")
 
-    # ── Step 6: Browse ────────────────────────────────────────────────
     browse(filtered, transport, storage)
 
     # Final favorites summary

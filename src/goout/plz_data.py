@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 plz_data.py
 
@@ -118,7 +119,7 @@ NRW_PLZ: dict[str, tuple[float, float, str]] = {
 }
 
 
-def lookup_plz(plz: str) -> tuple[float, float, str] | None:
+def lookup_plz(plz: str):
     """Return (lat, lon, city) for a PLZ, or None if not found."""
     return NRW_PLZ.get(plz.strip())
 
