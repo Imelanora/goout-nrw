@@ -32,12 +32,16 @@ def c(text: str, colour: str) -> str:
 def bold(text: str) -> str:
     return f"{BOLD}{text}{RESET}"
 
+def quit_app() -> None:
+    print(c("\n  Auf Wiedersehen! 👋", CYAN))
+    sys.exit(0)
+
 
 # Banner
 
 BANNER = f"""
 {CYAN}{BOLD}╔══════════════════════════════════════════════╗
-║  🗺️   GoOut NRW  –  Freizeit entdecken       ║
+║  🗺️   GoOut NRW  –  Freizeit entdecken        ║
 ║       Discover leisure in North Rhine-WP     ║
 ╚══════════════════════════════════════════════╝{RESET}
 """
@@ -64,11 +68,13 @@ def cat_icon(category: str) -> str:
 def prompt(msg: str, default: str = "") -> str:
     suffix = f" [{default}]" if default else ""
     try:
-        value = input(f"{CYAN}▶{RESET} {msg}{suffix}: ").strip()
+        value = input(f"{CYAN}▶{RESET} {msg}{suffix} {DIM}(q=beenden){RESET}: ").strip()
+        if value.lower() in ("q", "quit", "exit"):
+            quit_app()
         return value if value else default
     except (EOFError, KeyboardInterrupt):
         print()
-        sys.exit(0)
+        quit_app()
 
 
 def prompt_int(msg: str, default: int, min_val: int = 1, max_val: int = 9999) -> int:
@@ -155,6 +161,31 @@ NRW_CITIES: dict[str, tuple[float, float]] = {
     "Solingen":      (51.1607, 7.0837),
     "Paderborn":     (51.7189, 8.7575),
     "Siegen":        (50.8747, 8.0243),
+    
+    "Bottrop": (51.5236, 6.9289),
+    "Mülheim an der Ruhr": (51.4332, 6.8797),
+    "Herne": (51.5363, 7.2009),
+    "Castrop-Rauxel": (51.5471, 7.3116),
+    "Recklinghausen": (51.6141, 7.1979),
+    "Gladbeck": (51.5708, 6.9859),
+    "Herten": (51.5964, 7.1436),
+    "Marl": (51.6567, 7.0939),
+    "Datteln": (51.6547, 7.3403),
+    "Waltrop": (51.6228, 7.3928),
+    "Lünen": (51.6158, 7.5253),
+    "Witten": (51.4439, 7.3528),
+    "Hattingen": (51.4019, 7.1858),
+    "Unna": (51.5358, 7.6881),
+    "Kamen": (51.5911, 7.6644),
+    "Bergkamen": (51.6142, 7.6383),
+    "Dorsten": (51.6603, 6.9647),
+    "Haltern am See": (51.7431, 7.1811),
+    "Moers": (51.4517, 6.6264),
+    "Wesel": (51.6633, 6.6178),
+    "Voerde": (51.5983, 6.6944),
+    "Kamp-Lintfort": (51.5025, 6.5344),
+    "Neukirchen-Vluyn": (51.4458, 6.5578),
+    "Rheinberg": (51.5483, 6.5978),
 }
 
 
@@ -366,7 +397,7 @@ def run() -> None:
     print(c(f"\n  Verkehrsmittel: {transport_labels[transport]}", DIM))
 
     # Categories
-    print(f"\n{bold('Aktivitätskategorien')}")
+    print(f"\n{('Aktivitätskategorien')}")
     all_cats = get_all_categories(places)
     selected_cats = choose_from_list(
         all_cats,
@@ -389,7 +420,9 @@ def run() -> None:
         sys.exit(0)
 
     print(c(f"\n  {len(filtered)} Orte gefunden – viel Spaß beim Entdecken! 🎉", GREEN))
-    input(f"\n{CYAN}▶{RESET} ENTER drücken um zu starten …")
+    start = prompt("ENTER drücken um zu starten oder 'q' zum Beenden", "")
+    if start.lower() in ("q", "quit", "exit"):
+        quit_app()
 
     browse(filtered, transport, storage)
 
@@ -414,3 +447,4 @@ def run() -> None:
  
     print(c(f"\n  Favoriten gespeichert unter: {storage.path}", DIM))
     print(c("  Bis zum nächsten Mal! 🗺️\n", CYAN))
+  

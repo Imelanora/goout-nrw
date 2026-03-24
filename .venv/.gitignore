@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+**/.DS_Store
+ 
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+*.venv
+ 
+# Data (raw datasets may be large)
+data/raw/*.csv
+ 
+# User data
+*.json
+!data/processed/places.json
+ 
+# IDE
+.vscode/
+.idea/
+*.swp
