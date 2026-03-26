@@ -440,4 +440,463 @@
     "longitude": 7.0461,
     "description": "UNESCO-Welterbe und Kulturzentrum"
   }
+  {
+    "id": 50,
+    "name": "LVR-LandesMuseum Bonn",
+    "category": "Kultur",
+    "city": "Bonn",
+    "latitude": 50.7328,
+    "longitude": 7.1,
+    "description": "Archäologie und Kulturgeschichte des Rheinlandes"
+  },
+  {
+    "id": 51,
+    "name": "Kunstmuseum Bonn",
+    "category": "Kultur",
+    "city": "Bonn",
+    "latitude": 50.7267,
+    "longitude": 7.1017,
+    "description": "Bedeutende Sammlung rheinischer Expressionisten"
+  },
+  {
+    "id": 52,
+    "name": "Schloss Dyck",
+    "category": "Kultur",
+    "city": "Jüchen",
+    "latitude": 51.1039,
+    "longitude": 6.5447,
+    "description": "Barockes Wasserschloss inmitten eines Landschaftsparks"
+  },
+  {
+    "id": 53,
+    "name": "Burg Vischering",
+    "category": "Kultur",
+    "city": "Lüdinghausen",
+    "latitude": 51.7689,
+    "longitude": 7.4461,
+    "description": "Besterhaltene Wasserburg Westfalens"
+  },
+  {
+    "id": 54,
+    "name": "Gasometer Oberhausen",
+    "category": "Kultur",
+    "city": "Oberhausen",
+    "latitude": 51.4956,
+    "longitude": 6.8583,
+    "description": "Gigantisches Ausstellungsgebäude im ehemaligen Gasspeicher"
+  },
+  {
+    "id": 55,
+    "name": "Kunsthalle Bielefeld",
+    "category": "Kultur",
+    "city": "Bielefeld",
+    "latitude": 52.0236,
+    "longitude": 8.5261,
+    "description": "Modernes Kunstmuseum mit internationaler Sammlung"
+  },
+  {
+    "id": 56,
+    "name": "Burg Linn",
+    "category": "Kultur",
+    "city": "Krefeld",
+    "latitude": 51.3583,
+    "longitude": 6.6231,
+    "description": "Mittelalterliche Burganlage mit Museum und Naturschutzgebiet"
+  },
+  {
+    "id": 57,
+    "name": "Stadtmuseum Münster",
+    "category": "Kultur",
+    "city": "Münster",
+    "latitude": 51.9614,
+    "longitude": 7.6258,
+    "description": "Geschichte Münsters von der Römerzeit bis heute"
+  },
+  {
+    "id": 58,
+    "name": "Ruhr Museum Bochum – Bergbaumuseum",
+    "category": "Kultur",
+    "city": "Bochum",
+    "latitude": 51.4794,
+    "longitude": 7.2178,
+    "description": "Größtes Bergbaumuseum der Welt"
+  },
+  {
+    "id": 59,
+    "name": "Museum Folkwang",
+    "category": "Kultur",
+    "city": "Essen",
+    "latitude": 51.4456,
+    "longitude": 7.0092,
+    "description": "Weltklasse-Sammlung von Gemälden, Skulpturen und Fotografie"
+  },
+  {
+    "id": 60,
+    "name": "Schloss Raesfeld",
+    "category": "Kultur",
+    "city": "Raesfeld",
+    "latitude": 51.7681,
+    "longitude": 6.8481,
+    "description": "Barockes Wasserschloss im Münsterland"
+  },
+  {
+    "id": 61,
+    "name": "Archäologischer Park Xanten",
+    "category": "Kultur",
+    "city": "Xanten",
+    "latitude": 51.6569,
+    "longitude": 6.4481,
+    "description": "Freilichtmuseum auf dem Gelände der Römerstadt Colonia Ulpia Traiana"
+  },
+  {
+    "id": 62,
+    "name": "Eifel-Nationalpark – Kermeter",
+    "category": "Natur",
+    "city": "Schleiden",
+    "latitude": 50.5836,
+    "longitude": 6.42,
+    "description": "Kernzone des Nationalparks Eifel mit Urwald-Charakter"
+  },
+  {
+    "id": 63,
+    "name": "Rursee",
+    "category": "Natur",
+    "city": "Simmerath",
+    "latitude": 50.6253,
+    "longitude": 6.4,
+    "description": "Größter Stausee Deutschlands in der Eifel"
+  },
+  {
+    "id": 64,
+    "name": "Möhnesee",
+    "category": "Natur",
+    "city": "Möhnesee",
+    "latitude": 51.4883,
+    "longitude": 8.0683,
+    "description": "Beliebter Freizeitsee im Sauerland mit Segel- und Radmöglichkeiten"
+  },
+  {
+    "id": 65,
+    "name": "Haard Naturpark",
+    "category": "Natur",
+    "city": "Haltern am See",
+    "latitude": 51.71,
+    "longitude": 7.18,
+    "description": "Waldreiches Naturschutzgebiet im nördlichen Ruhrgebiet"
+  },
+  {
+    "id": 66,
+    "name": "Drachenfels",
+    "category": "Natur",
+    "city": "Königswinter",
+    "latitude": 50.6653,
+    "longitude": 7.1914,
+    "description": "Markanter Basaltfelsen mit Burgruine und Rheinblick"
+  },
+  {
+    "id": 67,
+    "name": "Biggesee",
+    "category": "Natur",
+    "city": "Attendorn",
+    "latitude": 51.1183,
+    "longitude": 7.9083,
+    "description": "Stausee im Sauerland mit Freizeitmöglichkeiten"
+  },
+  {
+    "id": 68,
+    "name": "Homert Naturpark",
+    "category": "Natur",
+    "city": "Schmallenberg",
+    "latitude": 51.15,
+    "longitude": 8.2833,
+    "description": "Sanfte Mittelgebirgslandschaft im südlichen Sauerland"
+  },
+  {
+    "id": 69,
+    "name": "Hohe Mark Naturpark",
+    "category": "Natur",
+    "city": "Dorsten",
+    "latitude": 51.77,
+    "longitude": 7.08,
+    "description": "Größter zusammenhängender Waldkomplex des Westmünsterlands"
+  },
+  {
+    "id": 70,
+    "name": "Brühlscher Park Bonn",
+    "category": "Park",
+    "city": "Bonn",
+    "latitude": 50.7344,
+    "longitude": 7.0939,
+    "description": "Historischer Rheinauenpark mit altem Baumbestand"
+  },
+  {
+    "id": 71,
+    "name": "Rheinaue Bonn",
+    "category": "Park",
+    "city": "Bonn",
+    "latitude": 50.71,
+    "longitude": 7.12,
+    "description": "Weitläufige Parkanlage direkt am Rheinufer"
+  },
+  {
+    "id": 72,
+    "name": "Stadtpark Wuppertal",
+    "category": "Park",
+    "city": "Wuppertal",
+    "latitude": 51.2622,
+    "longitude": 7.1714,
+    "description": "Klassischer Stadtpark auf den Wuppertaler Hügeln"
+  },
+  {
+    "id": 73,
+    "name": "Luisenpark Krefeld",
+    "category": "Park",
+    "city": "Krefeld",
+    "latitude": 51.3178,
+    "longitude": 6.5642,
+    "description": "Parkanlage mit Rosengarten und Spielflächen"
+  },
+  {
+    "id": 74,
+    "name": "Kaisergarten Oberhausen",
+    "category": "Park",
+    "city": "Oberhausen",
+    "latitude": 51.4975,
+    "longitude": 6.8722,
+    "description": "Historischer Park mit Zoobereich und Spielplätzen"
+  },
+  {
+    "id": 75,
+    "name": "Botanischer Garten Münster",
+    "category": "Park",
+    "city": "Münster",
+    "latitude": 51.9647,
+    "longitude": 7.6092,
+    "description": "Artenreicher botanischer Garten der Universität Münster"
+  },
+  {
+    "id": 76,
+    "name": "Schlosspark Bielefeld",
+    "category": "Park",
+    "city": "Bielefeld",
+    "latitude": 52.0217,
+    "longitude": 8.5328,
+    "description": "Grüner Stadtpark rund um das Altstädter Rathaus"
+  },
+  {
+    "id": 77,
+    "name": "Römer-Lippe-Route",
+    "category": "Radweg",
+    "city": "Wesel",
+    "latitude": 51.6633,
+    "longitude": 6.6178,
+    "description": "Radroute an der Lippe durch das Münsterland bis Detmold"
+  },
+  {
+    "id": 78,
+    "name": "EmsRadweg",
+    "category": "Radweg",
+    "city": "Rheine",
+    "latitude": 52.2789,
+    "longitude": 7.4394,
+    "description": "Flacher Fernradweg entlang der Ems durch das Münsterland"
+  },
+  {
+    "id": 79,
+    "name": "Radschnellweg Ruhr RS1",
+    "category": "Radweg",
+    "city": "Essen",
+    "latitude": 51.445,
+    "longitude": 6.995,
+    "description": "Moderne Fahrradschnelltrasse durch das gesamte Ruhrgebiet"
+  },
+  {
+    "id": 80,
+    "name": "Alleenradweg NRW",
+    "category": "Radweg",
+    "city": "Kleve",
+    "latitude": 51.7878,
+    "longitude": 6.1378,
+    "description": "Malerischer Radweg durch die Alleenlandschaft am Niederrhein"
+  },
+  {
+    "id": 81,
+    "name": "Sauerland-Radring",
+    "category": "Radweg",
+    "city": "Meschede",
+    "latitude": 51.35,
+    "longitude": 8.2833,
+    "description": "Rundtour durch Seen und Wälder des Sauerlandes"
+  },
+  {
+    "id": 82,
+    "name": "Movie Park Germany",
+    "category": "Freizeitpark",
+    "city": "Bottrop",
+    "latitude": 51.6072,
+    "longitude": 6.9764,
+    "description": "Filmthemenpark mit Hollywood-Attraktionen"
+  },
+  {
+    "id": 83,
+    "name": "Freizeitpark Fort Fun",
+    "category": "Freizeitpark",
+    "city": "Bestwig",
+    "latitude": 51.3394,
+    "longitude": 8.4039,
+    "description": "Erlebnispark in den Sauerländer Bergen mit Seilbahn"
+  },
+  {
+    "id": 84,
+    "name": "Ketteler Hof",
+    "category": "Freizeitpark",
+    "city": "Haltern am See",
+    "latitude": 51.7483,
+    "longitude": 7.1956,
+    "description": "Familienfreizeitpark auf einem echten Bauernhof"
+  },
+  {
+    "id": 85,
+    "name": "Allwetterzoo Münster",
+    "category": "Tiere",
+    "city": "Münster",
+    "latitude": 51.9658,
+    "longitude": 7.5958,
+    "description": "Zoo und Delphinarium in Münster"
+  },
+  {
+    "id": 86,
+    "name": "Zoo Wuppertal",
+    "category": "Tiere",
+    "city": "Wuppertal",
+    "latitude": 51.2489,
+    "longitude": 7.1656,
+    "description": "Einer der ältesten deutschen Zoos mit Elefantenfreianlage"
+  },
+  {
+    "id": 87,
+    "name": "Wildpark Arnsberg",
+    "category": "Tiere",
+    "city": "Arnsberg",
+    "latitude": 51.4028,
+    "longitude": 7.9856,
+    "description": "Einheimische Wildtiere in naturnaher Umgebung"
+  },
+  {
+    "id": 88,
+    "name": "Vogelpark Heiligenhaus",
+    "category": "Tiere",
+    "city": "Heiligenhaus",
+    "latitude": 51.3253,
+    "longitude": 6.97,
+    "description": "Europas Vogelwelt zum Erleben"
+  },
+  {
+    "id": 89,
+    "name": "Sea Life Oberhausen",
+    "category": "Tiere",
+    "city": "Oberhausen",
+    "latitude": 51.4997,
+    "longitude": 6.86,
+    "description": "Aquarium mit begehbaren Unterwassertunneln"
+  },
+  {
+    "id": 90,
+    "name": "Mineraltherme Bochum",
+    "category": "Wellness",
+    "city": "Bochum",
+    "latitude": 51.4578,
+    "longitude": 7.2528,
+    "description": "Thermalbad mit Sole und Sauna­bereich"
+  },
+  {
+    "id": 91,
+    "name": "AquaMar Soest",
+    "category": "Wellness",
+    "city": "Soest",
+    "latitude": 51.5672,
+    "longitude": 8.1122,
+    "description": "Erlebnisbad mit Saunalandschaft in der Soester Börde"
+  },
+  {
+    "id": 92,
+    "name": "Kristall Freizeitbad Lünen",
+    "category": "Wellness",
+    "city": "Lünen",
+    "latitude": 51.6158,
+    "longitude": 7.5261,
+    "description": "Großes Erlebnis- und Thermalbad"
+  },
+  {
+    "id": 93,
+    "name": "Römerthermen Zülpich",
+    "category": "Wellness",
+    "city": "Zülpich",
+    "latitude": 50.6978,
+    "longitude": 6.6536,
+    "description": "Therme direkt neben dem Museum der Badekultur"
+  },
+  {
+    "id": 94,
+    "name": "Quellenbad Bielefeld",
+    "category": "Wellness",
+    "city": "Bielefeld",
+    "latitude": 52.0281,
+    "longitude": 8.5578,
+    "description": "Modernes Thermal- und Erlebnisbad"
+  },
+  {
+    "id": 95,
+    "name": "Schadowstraße Düsseldorf",
+    "category": "Shopping",
+    "city": "Düsseldorf",
+    "latitude": 51.2267,
+    "longitude": 6.7817,
+    "description": "Belebteste Einkaufsstraße Düsseldorfs"
+  },
+  {
+    "id": 96,
+    "name": "Hohe Straße Köln",
+    "category": "Shopping",
+    "city": "Köln",
+    "latitude": 50.9381,
+    "longitude": 6.9533,
+    "description": "Fußgängerzone im Herzen der Kölner Innenstadt"
+  },
+  {
+    "id": 97,
+    "name": "Stadtgalerie Hamm",
+    "category": "Shopping",
+    "city": "Hamm",
+    "latitude": 51.6794,
+    "longitude": 7.8175,
+    "description": "Modernes Einkaufszentrum in der Hammer Innenstadt"
+  },
+  {
+    "id": 98,
+    "name": "Altmarkt-Galerie Duisburg",
+    "category": "Shopping",
+    "city": "Duisburg",
+    "latitude": 51.4344,
+    "longitude": 6.7622,
+    "description": "Großes Einkaufszentrum in der Duisburger City"
+  },
+  {
+    "id": 99,
+    "name": "Forum Mittelrhein Koblenz",
+    "category": "Shopping",
+    "city": "Koblenz",
+    "latitude": 50.3597,
+    "longitude": 7.5978,
+    "description": "Shoppingcenter an der Rhein-Mosel-Mündung"
+  },
+  {
+    "id": 100,
+    "name": "Limbecker Platz Essen",
+    "category": "Shopping",
+    "city": "Essen",
+    "latitude": 51.4567,
+    "longitude": 6.9939,
+    "description": "Größtes innerstädtisches Einkaufszentrum Deutschlands"
+  }
 ]
