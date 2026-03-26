@@ -1,7 +1,5 @@
 from __future__ import annotations
 """
-map_export.py
-
 Generates an interactive HTML map of liked places.
 Uses folium if installed, otherwise falls back to plain Leaflet.js HTML.
 """
@@ -45,7 +43,6 @@ def _make_folium_map(places: list, output: Path) -> None:
 
 
 def _make_leaflet_map(places: list, output: Path) -> None:
-    """Fallback: Leaflet.js map – no Python dependencies needed."""
     if places:
         center_lat = sum(p["latitude"] for p in places) / len(places)
         center_lon = sum(p["longitude"] for p in places) / len(places)
@@ -107,7 +104,6 @@ def _make_leaflet_map(places: list, output: Path) -> None:
 
 
 def export_map(places: list, output: Path = OUTPUT_PATH) -> Path:
-    """Export liked places to an interactive HTML map."""
     try:
         _make_folium_map(places, output)
     except ImportError:
