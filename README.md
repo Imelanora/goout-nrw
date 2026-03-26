@@ -108,6 +108,12 @@ goout-nrw
         ├── recommender.py      # place recommendation logic
         ├── distance.py         # geographic distance calculation
         └── storage.py          # save user favorites
+│
+└── test/
+    └── test_distance.py
+    └── test_recommender.py
+    └── test_storage.py 
+
 ```
  
 ### Structure Explanation
