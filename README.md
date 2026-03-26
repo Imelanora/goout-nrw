@@ -7,6 +7,11 @@ distance, transport mode and activity categories. Users can browse
 suggested locations and mark places they find interesting.
 The idea is conceptually similar to a simple swipe-based recommendation
 system for discovering nearby activities.
+
+## How it works
+
+The application filters places based on user input (location, distance, category)  
+and calculates distances using the haversine formula.
  
 ------------------------------------------------------------------------
  
@@ -58,6 +63,8 @@ Install dependencies:
  
 ```bash
 pip install pandas numpy
+pip install numpy
+pip install pytest (for testing)
 ```
  
 ------------------------------------------------------------------------
@@ -110,9 +117,9 @@ goout-nrw
         └── storage.py          # save user favorites
 │
 └── test/
-    └── test_distance.py
-    └── test_recommender.py
-    └── test_storage.py 
+    ├── test_distance.py
+    ├── test_recommender.py
+    └── test_storage.py
 
 ```
  
@@ -142,10 +149,10 @@ Contains the main application source code.
 ------------------------------------------------------------------------
  
 ## Future Improvements
- 
+
 Possible extensions include:
- 
--   map visualizations
--   smarter recommendation algorithms
--   integration of additional open datasets
--   location-based filtering using real GPS coordinates
+
+- map visualizations (basic export already implemented)
+- smarter recommendation algorithms
+- integration of additional open datasets
+- location-based filtering using real GPS coordinates
