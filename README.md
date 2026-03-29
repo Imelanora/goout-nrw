@@ -58,10 +58,19 @@ Clone the repository:
 git clone https://github.com/Imelanora/goout-nrw.git
 cd goout-nrw
 ```
+Create and activate a virtual environment:
+```bash
+python -m venv .venv
+source .venv/bin/activate   # macOS
+.venv\Scripts\activate      # on windows
+```
  
 Install dependencies:
  
 ```bash
+pip install -r requirements.txt
+
+
 pip install pandas numpy
 pip install numpy
 pip install pytest (for testing)
@@ -120,6 +129,7 @@ goout-nrw
     ├── test_distance.py
     ├── test_recommender.py
     └── test_storage.py
+    └── test_transport.py
 
 ```
  
@@ -136,23 +146,25 @@ Contains Python scripts used for preprocessing and preparing the datasets.
  
 **src/goout/**  
 Contains the main application source code.
+
+**test/**
+Unit tests for core functionality(distance,rocommender,storage,transport logic).
  
 ------------------------------------------------------------------------
  
 ## Technologies
- 
--   Python 3.9+
--   pandas
--   numpy
--   JSON data processing
+
+- Python 3.10+
+- pandas (data preprocessing)
+- pytest (testing)
+- folium (interactive map export)
  
 ------------------------------------------------------------------------
  
-## Future Improvements
+## Limitations
 
-Possible extensions include:
+- Travel times are approximations (no real routing)
+- Dataset limited to Open Data NRW sources
 
-- map visualizations (basic export already implemented)
-- smarter recommendation algorithms
-- integration of additional open datasets
-- location-based filtering using real GPS coordinates
+
+### Author: Melanie Oraca
