@@ -11,7 +11,7 @@ import random
 from pathlib import Path
 from typing import Optional
 
-from goout.distance import haversine
+from goout.distance import haversine, travel_time_minutes
 
 DATA_PATH = (
     Path(__file__).resolve().parents[2] / "data" / "processed" / "places.json"
@@ -38,8 +38,10 @@ def filter_places(
     places: list,
     user_lat: float,
     user_lon: float,
-    max_distance_km: float,
+    max_distance_km: Optional[float],
     categories: Optional[list] = None,
+    transport: str = "car",
+    max_minutes: Optional[float] = None,
 ) -> list:
     """
     Return places within *max_distance_km* that belong to one of the
@@ -48,24 +50,41 @@ def filter_places(
     """
     result = []
     for place in places:
+        if categories and place["category"] not in categories:
+            continue
+
         dist = haversine(user_lat, user_lon, place["latitude"], place["longitude"])
-        if dist > max_distance_km:
+        if max_distance_km is not None and dist > max_distance_km:
             continue
         if categories and place["category"] not in categories:
             continue
-        result.append({**place, "distance_km": round(dist, 1)})
 
-    result.sort(key=lambda p: p["distance_km"])
+        mins = travel_time_minutes(dist, transport)
+ 
+        if max_minutes is not None and mins > max_minutes:
+            continue
+
+        result.append({
+            **place,
+            "distance_km":    round(dist, 1),
+            "travel_minutes": round(mins, 1),
+        })
+
+    result.sort(key=lambda p: p["travel_minutes"])
     return result
 
 
 def shuffle_recommendations(
     places: list, seed: Optional[int] = None
 ) -> list:
-    """Return a lightly shuffled copy so every session feels fresh."""
-    rng = random.Random(seed)
-    pivot = max(1, len(places) // 3)
-    head  = places[:pivot]
-    tail  = list(places[pivot:])
-    rng.shuffle(tail)
-    return head + tail
+    if len(places) < 4:
+        shuffled = list(places)
+        random.Random(seed).shuffle(shuffled)
+        return shuffled
+    
+    rng   = random.Random(seed)
+    third = len(places) // 3
+    near, mid, far = places[:third], places[third:2 * third], places[2 * third:]
+    for bucket in (near, mid, far):
+        rng.shuffle(bucket)
+    return near + mid + far

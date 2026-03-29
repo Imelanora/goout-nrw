@@ -3,7 +3,12 @@ from __future__ import annotations
 import sys
 
 from goout.plz_data import lookup_plz
-from goout.distance import format_travel_time, travel_time_minutes
+from goout.distance import (
+    SPEEDS_KMH,
+    format_travel_time,
+    max_travel_time_minutes,
+    travel_time_minutes,
+)
 from goout.recommender import (
     filter_places,
     get_all_categories,
@@ -32,12 +37,15 @@ def c(text: str, colour: str) -> str:
 def bold(text: str) -> str:
     return f"{BOLD}{text}{RESET}"
 
+
 def quit_app() -> None:
     print(c("\n  Auf Wiedersehen! 👋", CYAN))
     sys.exit(0)
 
 
+# ---------------------------------------------------------------------------
 # Banner
+# ---------------------------------------------------------------------------
 
 BANNER = f"""
 {CYAN}{BOLD}╔══════════════════════════════════════════════╗
@@ -63,7 +71,9 @@ def cat_icon(category: str) -> str:
     return CATEGORY_EMOJI.get(category, "📍")
 
 
+# ---------------------------------------------------------------------------
 # Input helpers
+# ---------------------------------------------------------------------------
 
 def prompt(msg: str, default: str = "") -> str:
     suffix = f" [{default}]" if default else ""
@@ -104,10 +114,7 @@ def choose_from_list(
     multi: bool = False,
     default_all: bool = False,
 ) -> list[str]:
-    """
-    Display a numbered list and let the user pick one or more entries.
-    Returns the selected values.
-    """
+    """Display a numbered list and let the user pick one or more entries."""
     print()
     for i, opt in enumerate(options, start=1):
         icon = cat_icon(opt)
@@ -140,7 +147,9 @@ def choose_from_list(
             print(c("  Ungültige Auswahl.", YELLOW))
 
 
+# ---------------------------------------------------------------------------
 # NRW city coordinates
+# ---------------------------------------------------------------------------
 
 NRW_CITIES: dict[str, tuple[float, float]] = {
     "Köln":          (50.9333, 6.9500),
@@ -161,31 +170,30 @@ NRW_CITIES: dict[str, tuple[float, float]] = {
     "Solingen":      (51.1607, 7.0837),
     "Paderborn":     (51.7189, 8.7575),
     "Siegen":        (50.8747, 8.0243),
-    
-    "Bottrop": (51.5236, 6.9289),
+    "Bottrop":             (51.5236, 6.9289),
     "Mülheim an der Ruhr": (51.4332, 6.8797),
-    "Herne": (51.5363, 7.2009),
-    "Castrop-Rauxel": (51.5471, 7.3116),
-    "Recklinghausen": (51.6141, 7.1979),
-    "Gladbeck": (51.5708, 6.9859),
-    "Herten": (51.5964, 7.1436),
-    "Marl": (51.6567, 7.0939),
-    "Datteln": (51.6547, 7.3403),
-    "Waltrop": (51.6228, 7.3928),
-    "Lünen": (51.6158, 7.5253),
-    "Witten": (51.4439, 7.3528),
-    "Hattingen": (51.4019, 7.1858),
-    "Unna": (51.5358, 7.6881),
-    "Kamen": (51.5911, 7.6644),
-    "Bergkamen": (51.6142, 7.6383),
-    "Dorsten": (51.6603, 6.9647),
-    "Haltern am See": (51.7431, 7.1811),
-    "Moers": (51.4517, 6.6264),
-    "Wesel": (51.6633, 6.6178),
-    "Voerde": (51.5983, 6.6944),
-    "Kamp-Lintfort": (51.5025, 6.5344),
-    "Neukirchen-Vluyn": (51.4458, 6.5578),
-    "Rheinberg": (51.5483, 6.5978),
+    "Herne":               (51.5363, 7.2009),
+    "Castrop-Rauxel":      (51.5471, 7.3116),
+    "Recklinghausen":      (51.6141, 7.1979),
+    "Gladbeck":            (51.5708, 6.9859),
+    "Herten":              (51.5964, 7.1436),
+    "Marl":                (51.6567, 7.0939),
+    "Datteln":             (51.6547, 7.3403),
+    "Waltrop":             (51.6228, 7.3928),
+    "Lünen":               (51.6158, 7.5253),
+    "Witten":              (51.4439, 7.3528),
+    "Hattingen":           (51.4019, 7.1858),
+    "Unna":                (51.5358, 7.6881),
+    "Kamen":               (51.5911, 7.6644),
+    "Bergkamen":           (51.6142, 7.6383),
+    "Dorsten":             (51.6603, 6.9647),
+    "Haltern am See":      (51.7431, 7.1811),
+    "Moers":               (51.4517, 6.6264),
+    "Wesel":               (51.6633, 6.6178),
+    "Voerde":              (51.5983, 6.6944),
+    "Kamp-Lintfort":       (51.5025, 6.5344),
+    "Neukirchen-Vluyn":    (51.4458, 6.5578),
+    "Rheinberg":           (51.5483, 6.5978),
 }
 
 
@@ -201,7 +209,6 @@ def choose_location() -> tuple[float, float, str]:
     mode = prompt("Wie möchtest du deinen Standort angeben? [1/2]", "1")
 
     if mode.strip() == "2":
-        # City list
         cities = list(NRW_CITIES.keys())
         for i, city in enumerate(cities, start=1):
             print(f"  {DIM}{i:>2}.{RESET}  {city}")
@@ -215,7 +222,6 @@ def choose_location() -> tuple[float, float, str]:
         lat, lon = NRW_CITIES[city]
         return lat, lon, city
 
-    # PLZ input
     while True:
         plz = prompt("Postleitzahl eingeben (z.B. 47051)")
         result = lookup_plz(plz)
@@ -226,15 +232,65 @@ def choose_location() -> tuple[float, float, str]:
         print(c(
             f"  PLZ '{plz}' nicht gefunden. "
             "Bitte eine gültige NRW-Postleitzahl eingeben.",
-            YELLOW
+            YELLOW,
         ))
 
 
+# ---------------------------------------------------------------------------
+# Filter mode: distance OR travel time OR both
+# ---------------------------------------------------------------------------
+
+def choose_filter_mode(transport: str) -> tuple[float | None, float | None]:
+    """
+    Ask the user how they want to limit results.
+
+    Returns ``(max_distance_km, max_minutes)``.
+    At least one value is always set; both can be set if the user
+    chooses option 3.
+    """
+    speed  = SPEEDS_KMH.get(transport, 50.0)
+    t_icon = TRANSPORT_EMOJI.get(transport, "🚗")
+
+    print(f"\n{bold('Reichweite einschränken')}")
+    print(f"  {c('1', CYAN)} Maximale Entfernung  (km)")
+    print(f"  {c('2', CYAN)} Maximale Reisezeit   (Minuten)  {t_icon}")
+    print(f"  {c('3', CYAN)} Beides kombinieren")
+    print()
+
+    mode = prompt("Filtermodus wählen [1/2/3]", "1")
+
+    max_distance_km: float | None = None
+    max_minutes:     float | None = None
+
+    if mode in ("1", "3"):
+        max_distance_km = float(prompt_int(
+            "Maximale Entfernung (km)", default=50, min_val=1, max_val=500
+        ))
+        equiv_min = max_travel_time_minutes(max_distance_km, transport)
+        print(c(f"  ≈ {format_travel_time(equiv_min)} mit {t_icon}", DIM))
+
+    if mode in ("2", "3"):
+        max_minutes = float(prompt_int(
+            "Maximale Reisezeit (Minuten)", default=30, min_val=1, max_val=600
+        ))
+        equiv_km = speed * max_minutes / 60
+        print(c(f"  ≈ {equiv_km:.0f} km mit {t_icon}", DIM))
+
+    # Fallback: unexpected input → default to 50 km distance cap
+    if max_distance_km is None and max_minutes is None:
+        max_distance_km = 50.0
+
+    return max_distance_km, max_minutes
+
+
+# ---------------------------------------------------------------------------
 # Place card
+# ---------------------------------------------------------------------------
 
 def print_place_card(place: dict, transport: str, index: int, total: int) -> None:
     dist   = place["distance_km"]
-    mins   = travel_time_minutes(dist, transport)
+    # prefer pre-computed value, fall back to live calculation
+    mins   = place.get("travel_minutes", travel_time_minutes(dist, transport))
     ttime  = format_travel_time(mins)
     icon   = cat_icon(place["category"])
     t_icon = TRANSPORT_EMOJI.get(transport, "🚗")
@@ -243,7 +299,10 @@ def print_place_card(place: dict, transport: str, index: int, total: int) -> Non
     print(f"  {DIM}[{index}/{total}]{RESET}  {bold(place['name'])}  {icon}")
     print(f"  {DIM}Ort:{RESET}         {place['city']}")
     print(f"  {DIM}Kategorie:{RESET}   {place['category']}")
-    print(f"  {DIM}Entfernung:{RESET}  {c(f'{dist} km', CYAN)}   {t_icon} {c(ttime, YELLOW)}")
+    print(
+        f"  {DIM}Entfernung:{RESET}  {c(f'{dist} km', CYAN)}"
+        f"   {t_icon} {c(ttime, YELLOW)}"
+    )
     if place.get("description"):
         desc = place["description"]
         if len(desc) > 80:
@@ -252,7 +311,9 @@ def print_place_card(place: dict, transport: str, index: int, total: int) -> Non
     print(f"  {'─' * 46}")
 
 
+# ---------------------------------------------------------------------------
 # Browse loop
+# ---------------------------------------------------------------------------
 
 def browse(places: list[dict], transport: str, storage: FavoritesStorage) -> None:
     total   = len(places)
@@ -318,7 +379,9 @@ def browse(places: list[dict], transport: str, storage: FavoritesStorage) -> Non
     )
 
 
+# ---------------------------------------------------------------------------
 # Favorites view
+# ---------------------------------------------------------------------------
 
 def show_favorites(storage: FavoritesStorage, transport: str = "car") -> None:
     favs = storage.all()
@@ -326,14 +389,18 @@ def show_favorites(storage: FavoritesStorage, transport: str = "car") -> None:
         print(c("\n  Noch keine Favoriten gespeichert.", DIM))
         return
 
+    t_icon = TRANSPORT_EMOJI.get(transport, "🚗")
     print(f"\n  {bold('Deine Favoriten')} ({len(favs)} {'Ort' if len(favs) == 1 else 'Orte'})")
     print(f"  {'─' * 44}")
     for i, place in enumerate(favs, start=1):
-        icon = cat_icon(place["category"])
-        dist = place.get("distance_km", "?")
+        icon  = cat_icon(place["category"])
+        dist  = place.get("distance_km", "?")
+        mins  = place.get("travel_minutes")
+        ttime = format_travel_time(mins) if mins is not None else "?"
         print(
             f"  {DIM}{i:>2}.{RESET}  {icon}  {bold(place['name'])}"
-            f"  {DIM}({place['city']} · {place['category']} · {dist} km){RESET}"
+            f"  {DIM}({place['city']} · {place['category']}"
+            f" · {dist} km · {t_icon} {ttime}){RESET}"
         )
     print(f"  {'─' * 44}")
 
@@ -350,7 +417,9 @@ def show_favorites(storage: FavoritesStorage, transport: str = "car") -> None:
             pass
 
 
+# ---------------------------------------------------------------------------
 # Main session
+# ---------------------------------------------------------------------------
 
 def run() -> None:
     print(BANNER)
@@ -364,17 +433,11 @@ def run() -> None:
 
     storage = FavoritesStorage()
 
-    # Location
+    # --- Location -----------------------------------------------------------
     user_lat, user_lon, user_city = choose_location()
     print(c(f"\n  Standort gesetzt: {user_city} ({user_lat:.4f}°N, {user_lon:.4f}°E)", DIM))
 
-    # Max distance
-    print(f"\n{bold('Maximale Entfernung')}")
-    max_km = prompt_int(
-        "Wie weit möchtest du fahren? (km)", default=50, min_val=1, max_val=500
-    )
-
-    # Transport
+    # --- Transport (before filter so speed is known) ------------------------
     print(f"\n{bold('Verkehrsmittel')}")
     transport_options = ["walking", "bike", "car"]
     transport_labels  = {
@@ -384,7 +447,8 @@ def run() -> None:
     }
     print()
     for i, t in enumerate(transport_options, start=1):
-        print(f"  {DIM}{i:>2}.{RESET}  {transport_labels[t]}")
+        speed = SPEEDS_KMH[t]
+        print(f"  {DIM}{i:>2}.{RESET}  {transport_labels[t]}  {DIM}(~{speed:.0f} km/h){RESET}")
     print()
     raw = prompt("Verkehrsmittel wählen", "3")
     try:
@@ -396,8 +460,11 @@ def run() -> None:
     transport = transport_options[t_idx]
     print(c(f"\n  Verkehrsmittel: {transport_labels[transport]}", DIM))
 
-    # Categories
-    print(f"\n{('Aktivitätskategorien')}")
+    # --- Filter mode: km / Reisezeit / beides -------------------------------
+    max_distance_km, max_minutes = choose_filter_mode(transport)
+
+    # --- Categories ---------------------------------------------------------
+    print(f"\n{bold('Aktivitätskategorien')}")
     all_cats = get_all_categories(places)
     selected_cats = choose_from_list(
         all_cats,
@@ -407,16 +474,30 @@ def run() -> None:
     )
     print(c(f"\n  Ausgewählt: {', '.join(selected_cats)}", DIM))
 
-    # Filter and recommend
-    filtered = filter_places(places, user_lat, user_lon, max_km, selected_cats)
+    # --- Filter and recommend -----------------------------------------------
+    filtered = filter_places(
+        places,
+        user_lat, user_lon,
+        max_distance_km=max_distance_km,
+        categories=selected_cats,
+        transport=transport,
+        max_minutes=max_minutes,
+    )
     filtered = shuffle_recommendations(filtered)
 
     if not filtered:
+        limit_parts = []
+        if max_distance_km is not None:
+            limit_parts.append(f"{max_distance_km:.0f} km")
+        if max_minutes is not None:
+            limit_parts.append(format_travel_time(max_minutes))
+        limit_str = " / ".join(limit_parts) or "den gewählten Einstellungen"
         print(c(
-            f"\n  Keine Orte gefunden in {max_km} km mit den gewählten Kategorien.",
+            f"\n  Keine Orte gefunden innerhalb {limit_str} "
+            f"mit den gewählten Kategorien.",
             YELLOW,
         ))
-        print(c("  Tipp: Erhöhe die Entfernung oder wähle mehr Kategorien.", DIM))
+        print(c("  Tipp: Erhöhe Entfernung/Reisezeit oder wähle mehr Kategorien.", DIM))
         sys.exit(0)
 
     print(c(f"\n  {len(filtered)} Orte gefunden – viel Spaß beim Entdecken! 🎉", GREEN))
@@ -426,14 +507,13 @@ def run() -> None:
 
     browse(filtered, transport, storage)
 
-    # Final favorites summary
+    # --- Final favorites summary --------------------------------------------
     if storage.count() > 0:
         raw = prompt("\nFavoriten zum Abschluss anzeigen? [j/N]", "n")
         if raw.lower() in ("j", "ja", "y", "yes"):
             show_favorites(storage, transport)
 
     print(c(f"\n  Favoriten gespeichert unter: {storage.path}", DIM))
-    print(c("  Bis zum nächsten Mal! 🗺️\n", CYAN))
 
 # Map export
     if storage.count() > 0:
@@ -447,4 +527,3 @@ def run() -> None:
  
     print(c(f"\n  Favoriten gespeichert unter: {storage.path}", DIM))
     print(c("  Bis zum nächsten Mal! 🗺️\n", CYAN))
-  

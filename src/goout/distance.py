@@ -1,9 +1,3 @@
-"""
-distance.py
-
-Geographic distance calculation using the Haversine formula.
-All distances are returned in kilometres.
-"""
 
 import math
 
@@ -13,7 +7,7 @@ EARTH_RADIUS_KM = 6_371.0
 SPEEDS_KMH: dict[str, float] = {
     "walking": 5.0,
     "bike":    15.0,
-    "car":     60.0,
+    "car":     50.0,  
 }
 
 
@@ -31,8 +25,13 @@ def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
 
 def travel_time_minutes(distance_km: float, transport: str) -> float:
     """Return estimated travel time in minutes for a given transport mode."""
-    speed = SPEEDS_KMH.get(transport, 60.0)
-    return (distance_km / speed) * 60
+    speed = SPEEDS_KMH.get(transport, SPEEDS_KMH["car"])
+    return (distance_km / speed) * 50
+
+
+def max_travel_time_minutes(max_km: float, transport: str) -> float:
+    """Convert a max distance in km to a max travel time in minutes."""
+    return travel_time_minutes(max_km, transport)
 
 
 def format_travel_time(minutes: float) -> str:
