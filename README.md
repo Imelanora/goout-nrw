@@ -5,6 +5,16 @@ GoOut NRW is a Python command-line application that recommends leisure activitie
 NRW is one of the most densely populated regions in Europe – yet many people don't know what's right on their doorstep. GoOut NRW makes it easy to discover parks, cultural sites, nature spots and more, filtered to what's actually reachable for you today.
 
 ---
+ 
+## Research Question
+ 
+> **How can open geodata be used to generate location-based leisure recommendations for NRW?**
+ 
+As a follow-up question: How can a CLI application for personalised leisure planning be implemented using Python and open data?
+ 
+The project explores these questions by combining publicly available datasets from Open Data NRW with geographic distance calculation (Haversine formula) and user-defined filters. The result is a lightweight, offline-capable tool that requires no external APIs or map services to deliver relevant, personalised suggestions.
+
+---
 
 ## How it works
 
