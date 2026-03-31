@@ -1,4 +1,3 @@
-
 import math
 
 EARTH_RADIUS_KM = 6_371.0
@@ -26,7 +25,7 @@ def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
 def travel_time_minutes(distance_km: float, transport: str) -> float:
     """Return estimated travel time in minutes for a given transport mode."""
     speed = SPEEDS_KMH.get(transport, SPEEDS_KMH["car"])
-    return (distance_km / speed) * 50
+    return (distance_km / speed) * 60
 
 
 def max_travel_time_minutes(max_km: float, transport: str) -> float:

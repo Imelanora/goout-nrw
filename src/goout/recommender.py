@@ -56,8 +56,6 @@ def filter_places(
         dist = haversine(user_lat, user_lon, place["latitude"], place["longitude"])
         if max_distance_km is not None and dist > max_distance_km:
             continue
-        if categories and place["category"] not in categories:
-            continue
 
         mins = travel_time_minutes(dist, transport)
  

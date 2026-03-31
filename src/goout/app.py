@@ -513,8 +513,6 @@ def run() -> None:
         if raw.lower() in ("j", "ja", "y", "yes"):
             show_favorites(storage, transport)
 
-    print(c(f"\n  Favoriten gespeichert unter: {storage.path}", DIM))
-
 # Map export
     if storage.count() > 0:
         raw = prompt("\nFavoriten als Karte im Browser öffnen? [j/N]", "n")
